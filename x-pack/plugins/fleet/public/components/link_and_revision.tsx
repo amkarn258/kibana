@@ -14,6 +14,7 @@ import React, { memo } from 'react';
 import type { AgentPolicy, Agent } from '../../common/types';
 import { useLink } from '../hooks';
 const MIN_WIDTH: CSSProperties = { minWidth: 0 };
+const MAX_WIDTH: CSSProperties = { maxWidth: '400px' };
 const NO_WRAP_WHITE_SPACE: CSSProperties = { whiteSpace: 'nowrap' };
 
 export const AgentPolicySummaryLine = memo<{
@@ -85,7 +86,7 @@ export const AgentPolicySummaryLine = memo<{
         </EuiFlexGroup>
       </EuiFlexItem>
       {withDescription && description && (
-        <EuiFlexItem>
+        <EuiFlexItem style={MAX_WIDTH}>
           <EuiText color="subdued" className="eui-textTruncate" title={description} size="xs">
             {description}
           </EuiText>
