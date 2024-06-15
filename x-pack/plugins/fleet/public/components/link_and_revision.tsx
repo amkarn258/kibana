@@ -71,7 +71,7 @@ export const AgentPolicySummaryLine = memo<{
               )}
             </EuiFlexGroup>
           </EuiFlexItem>
-          
+
           {revision && (
             <EuiFlexItem grow={false}>
               <EuiText color="subdued" size="xs" style={NO_WRAP_WHITE_SPACE}>
