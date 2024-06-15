@@ -1,10 +1,3 @@
-/*
- * Copyright Elasticsearch B.V. and/or licensed to Elasticsearch B.V. under one
- * or more contributor license agreements. Licensed under the Elastic License
- * 2.0; you may not use this file except in compliance with the Elastic License
- * 2.0.
- */
-
 import { EuiFlexGroup, EuiFlexItem, EuiIconTip, EuiLink, EuiText } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
 import { FormattedMessage } from '@kbn/i18n-react';
@@ -13,8 +6,9 @@ import React, { memo } from 'react';
 
 import type { AgentPolicy, Agent } from '../../common/types';
 import { useLink } from '../hooks';
+
 const MIN_WIDTH: CSSProperties = { minWidth: 0 };
-const MAX_WIDTH: CSSProperties = { maxWidth: '400px' };
+const MAX_WIDTH: CSSProperties = { maxWidth: "100%" };
 const NO_WRAP_WHITE_SPACE: CSSProperties = { whiteSpace: 'nowrap' };
 
 export const AgentPolicySummaryLine = memo<{
@@ -27,9 +21,9 @@ export const AgentPolicySummaryLine = memo<{
   const { name, id, is_managed: isManaged, description } = policy;
 
   const revision = agent ? agent.policy_revision : policy.revision;
-
+  console.log(policy);
   return (
-    <EuiFlexGroup direction="column" gutterSize="xs">
+    <EuiFlexGroup direction="column" gutterSize="xs" style={MAX_WIDTH}>
       <EuiFlexItem>
         <EuiFlexGroup
           direction={direction}
@@ -85,13 +79,15 @@ export const AgentPolicySummaryLine = memo<{
           )}
         </EuiFlexGroup>
       </EuiFlexItem>
+      
       {withDescription && description && (
-        <EuiFlexItem style={MAX_WIDTH}>
+        <EuiFlexItem>
           <EuiText color="subdued" className="eui-textTruncate" title={description} size="xs">
             {description}
           </EuiText>
         </EuiFlexItem>
       )}
+      
     </EuiFlexGroup>
   );
 });
